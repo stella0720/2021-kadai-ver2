@@ -25,8 +25,10 @@ export default function Home() {
 
     <div className="flex flex-wrap -mx-4 -mb-10">
       <div className="sm:w-full mb-10 px-4 .text-left">
-        <h1 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3"><FontAwesomeIcon icon={faAngleDoubleRight} className="mr-2"/>LandingPage</h1>
+        <h1 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3"><FontAwesomeIcon icon={faAngleDoubleRight} className="mr-2"/>ランディングページタイトル</h1>
+        <p className="invisible">{user?.uid || '未ログイン'}</p>
       </div>
+
       <div className="sm:w-1/2 mb-10 px-4 .text-left">
         <div className="rounded-lg overflow-hidden">
           <Image alt="content" className="object-cover object-center h-full w-full" src={profilePic} />
@@ -35,6 +37,7 @@ export default function Home() {
         <p className="w-2/3 leading-relaxed text-base">「あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。」</p>
         <button className="mt-6 w-32 bg-blue-400 text-white active:bg-lightBlue-200 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> button</button>
       </div>
+
       <div className="sm:w-1/2 mb-10 px-4 .text-left">
         <div className="rounded-lg overflow-hidden">
           <Image alt="content" className="object-cover object-center h-full w-full" src={profilePic} />
@@ -43,27 +46,64 @@ export default function Home() {
         <p className="w-2/3 leading-relaxed text-base">「あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。」</p>
         <button className="mt-6 w-32 bg-blue-400 text-white active:bg-lightBlue-200 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> button</button>
       </div>
-      <div className="sm:w-1/5 flex flex-col mb-10 px-4 .text-left">
-      <div className="mt-8">
-      <p className="leading-relaxed text-base"><FontAwesomeIcon icon={faEnvelope} className="mr-2"/>ダミーテキスト</p>
-        <button className="mt-6 w-32 bg-rose-300 text-white active:bg-rose-200 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">form</button>
-      </div>
-      </div>
-      <div className="sm:w-1/5 flex flex-col mb-10 px-4 .text-left">
 
-      <div className="mt-8">
-      <p className="leading-relaxed text-base"><FontAwesomeIcon icon={faTwitter} className="mr-2"/>ダミーテキスト</p>
-        <button className="mt-6 w-32 bg-sky-400 text-white active:bg-lightBlue-200 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"><i className="fas fa-heart"></i> twitter</button>
+      <div className="sm:w-1/5 flex flex-col mb-10 px-4 .text-left">
+        <div className="mt-8">
+          <p className="leading-relaxed text-base mr-2　mb-3"><FontAwesomeIcon icon={faEnvelope} className="mr-2"/>ダミーテキスト</p>
+        </div>
+        <div className="mt-5">
+          <Link href={{
+            pathname: '/users/[uid]',
+            query:{ uid: user?.uid },
+          }}>
+            <a className="mt-6 w-32 bg-teal-400
+                        text-white
+                        active:bg-teal-200
+                          font-bold uppercase text-sm
+                          px-6 py-3 rounded shadow
+                          hover:shadow-lg outline-none
+                          focus:outline-none mr-1 before:mb-1
+                          ease-linear transition-all duration-150">
+              <span>contact</span>
+            </a>
+          </Link>
+          {/* <button className="mt-6 w-32 bg-rose-300 text-white active:bg-rose-200 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">form</button> */}
+        </div>
       </div>
-      <div className="mt-8">
-      <Link href="/blog">ブログへ
-      </Link>
+
+      <div className="sm:w-1/5 flex flex-col mb-10 px-4 .text-left">
+        <div className="mt-8">
+          <p className="leading-relaxed text-base mr-2　mb-3"><FontAwesomeIcon icon={faBookOpen} className="mr-2"/>ダミーテキスト</p>
+        </div>
+        <div className="mt-5">
+          <Link href={{
+            pathname: '/blog',
+            query:{ name: 'test' },
+          }}>
+            <a className="mt-6 w-32 bg-teal-400
+                        text-white
+                        active:bg-teal-200
+                          font-bold uppercase text-sm
+                          px-6 py-3 rounded shadow
+                          hover:shadow-lg outline-none
+                          focus:outline-none mr-1 before:mb-1
+                          ease-linear transition-all duration-150">
+                      <span>blog</span>
+            </a>
+          </Link>
+        </div>
       </div>
+      {/* <div className="sm:w-1/5 flex flex-col mb-10 px-4 .text-left">
+        <div className="mt-8">
+        <p className="leading-relaxed text-base"><FontAwesomeIcon icon={faTwitter} className="mr-2"/>ダミーテキスト</p>
+          <button className="mt-6 w-32 bg-sky-400 text-white active:bg-lightBlue-200 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"><i className="fas fa-heart"></i> sns</button>
+        </div>
+      </div> */}
+
 
     </div>
     </div>
 
-</div>
   </section>
   )
 }
