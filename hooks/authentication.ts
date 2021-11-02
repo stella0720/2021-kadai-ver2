@@ -16,12 +16,13 @@ const userState = atom<User>({
 })
 
 async function createUserIfNotFound(user: User) {
+
   const db = getFirestore()
   const usersCollection = collection(db, 'users')
   const userRef = doc(usersCollection, user.uid)
   const document = await getDoc(userRef)
+  
   if (document.exists()) {
-    // 書き込みの方が高いので！
     return
   }
 
